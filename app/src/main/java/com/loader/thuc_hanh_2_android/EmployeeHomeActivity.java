@@ -14,6 +14,7 @@ import com.loader.thuc_hanh_2_android.session.HomeRouter;
 import com.loader.thuc_hanh_2_android.data.entity.Account;
 import com.loader.thuc_hanh_2_android.session.AccessGuard;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
+import com.loader.thuc_hanh_2_android.ui.salary.EmployeeSalaryActivity;
 import com.loader.thuc_hanh_2_android.ui.attendance.AttendanceHistoryActivity;
 import com.loader.thuc_hanh_2_android.utils.TimeUtils;
 import com.loader.thuc_hanh_2_android.utils.ValidationResult;
@@ -118,6 +119,12 @@ public class EmployeeHomeActivity extends AppCompatActivity {
 
         binding.btnViewHistory.setOnClickListener(v -> {
             Intent intent = new Intent(EmployeeHomeActivity.this, AttendanceHistoryActivity.class);
+            intent.putExtra(EXTRA_EMPLOYEE_ID, currentEmployeeId);
+            startActivity(intent);
+        });
+
+        binding.btnViewSalary.setOnClickListener(v -> {
+            Intent intent = new Intent(EmployeeHomeActivity.this, EmployeeSalaryActivity.class);
             intent.putExtra(EXTRA_EMPLOYEE_ID, currentEmployeeId);
             startActivity(intent);
         });

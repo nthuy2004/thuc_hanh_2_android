@@ -72,6 +72,17 @@
             android:textSize="@dimen/text_medium"
             android:layout_marginBottom="@dimen/padding_medium"/>
 
+
+        <Button
+            android:id="@+id/btn_view_salary"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:text="Bảng lương cá nhân"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium" />
+
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="200dp"

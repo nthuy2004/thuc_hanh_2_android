@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="salary_error_period">Nhập tháng/năm đúng dạng MM/yyyy (VD: 10/2026)</string>
+    <string name="salary_generated">Đã tạo bảng lương %1$02d/%2$d cho %3$d nhân viên</string>
+    <string name="salary_admin_empty">Chưa có bảng lương tháng này. Bấm "Tạo/Xem bảng lương" để tạo.</string>
+    <string name="salary_employee_empty">Chưa có bảng lương nào của bạn.</string>
+    <string name="salary_marked_paid">Đã đánh dấu đã thanh toán</string>
+</resources>

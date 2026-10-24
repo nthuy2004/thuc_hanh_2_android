@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import java.util.List;
 
 import com.loader.thuc_hanh_2_android.data.entity.Employee;
 
@@ -27,7 +28,7 @@ public interface EmployeeDao {
 
     /** Danh sach nhan vien chua bi xoa mem, sap xep theo ten. */
     @Query("SELECT * FROM employee WHERE isActive = 1 ORDER BY fullname COLLATE NOCASE")
-    LiveData<List<Employee>> getAllActive();
+    LiveData<List<Employee>> observeAllActive();
 
     /** Tim theo ten hoac ma (keyword da escape % _ \ ; keyword rong = tat ca). */
     @Query("SELECT * FROM employee WHERE isActive = 1 AND ("
@@ -45,4 +46,7 @@ public interface EmployeeDao {
 
     @Query("UPDATE employee SET isActive = 0 WHERE id = :id")
     void softDelete(long id);
+
+    @Query("SELECT * FROM employee WHERE isActive = 1 ORDER BY fullname ASC")
+    List<Employee> getAllActive();
 }
