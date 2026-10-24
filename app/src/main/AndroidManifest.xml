@@ -29,7 +29,7 @@
             android:name=".AdminDashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".EmployeeHomeActivity"
+            android:name=".EmployeeHomeActivity" />
 
         <!-- Module Attendance (P2) -->
         <activity
