@@ -45,8 +45,7 @@ public class MainActivityRoutingTest {
     public void adminSession_goesToAdminHome() {
         session.saveSession(1, SessionManager.NO_ID, "admin", Account.ROLE_ADMIN);
         try (ActivityScenario<MainActivity> s = ActivityScenario.launch(MainActivity.class)) {
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("ADMIN"))));
+            onView(withId(R.id.cv_manage_employees)).check(matches(isDisplayed()));
         }
     }
 

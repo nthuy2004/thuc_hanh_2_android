@@ -117,7 +117,7 @@ public class EmployeeListActivityTest {
         try (ActivityScenario<com.loader.thuc_hanh_2_android.AdminDashboardActivity> s =
                      ActivityScenario.launch(
                              com.loader.thuc_hanh_2_android.AdminDashboardActivity.class)) {
-            onView(withTagValue(is((Object) "manage_employees"))).perform(click());
+            onView(withId(R.id.cv_manage_employees)).perform(click());
             Thread.sleep(800);
             onView(withText(containsString("Nguyen Van An"))).check(matches(isDisplayed()));
         }

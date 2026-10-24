@@ -61,8 +61,7 @@ public class AccessGuardTest {
         session.saveSession(1, SessionManager.NO_ID, "admin", Account.ROLE_ADMIN);
         try (ActivityScenario<EmployeeHomeActivity> s =
                      ActivityScenario.launch(EmployeeHomeActivity.class)) {
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("ADMIN"))));
+            onView(withId(R.id.cv_manage_employees)).check(matches(isDisplayed()));
         }
     }
 
@@ -71,8 +70,7 @@ public class AccessGuardTest {
         session.saveSession(1, SessionManager.NO_ID, "admin", Account.ROLE_ADMIN);
         try (ActivityScenario<AdminDashboardActivity> s =
                      ActivityScenario.launch(AdminDashboardActivity.class)) {
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("admin"))));
+            onView(withId(R.id.cv_manage_employees)).check(matches(isDisplayed()));
         }
     }
 
@@ -81,7 +79,7 @@ public class AccessGuardTest {
         session.saveSession(1, SessionManager.NO_ID, "admin", Account.ROLE_ADMIN);
         try (ActivityScenario<AdminDashboardActivity> s =
                      ActivityScenario.launch(AdminDashboardActivity.class)) {
-            onView(withTagValue(is((Object) "logout"))).perform(click());
+            onView(withId(R.id.btn_logout)).perform(click());
             onView(withId(R.id.btn_login)).check(matches(isDisplayed()));
             assertFalse(session.isLoggedIn());
         }

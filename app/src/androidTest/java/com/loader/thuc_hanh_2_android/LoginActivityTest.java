@@ -93,8 +93,7 @@ public class LoginActivityTest {
             assertEquals(Account.ROLE_ADMIN, session.getRole());
             assertEquals("admin", session.getUsername());
             assertEquals(SessionManager.NO_ID, session.getEmployeeId());
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("admin"))));
+            onView(withId(R.id.cv_manage_employees)).check(matches(isDisplayed()));
         }
     }
 
