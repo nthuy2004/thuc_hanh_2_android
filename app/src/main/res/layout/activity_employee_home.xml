@@ -58,6 +58,16 @@
             android:backgroundTint="@color/errorColor"
             android:textColor="@color/white"
             android:textSize="@dimen/text_medium"
-            android:enabled="false"/>
+            android:enabled="false"
+            android:layout_marginBottom="@dimen/padding_medium"/>
+
+        <Button
+            android:id="@+id/btn_view_history"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="Lịch Sử Chấm Công"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"/>
     </LinearLayout>
 </LinearLayout>
