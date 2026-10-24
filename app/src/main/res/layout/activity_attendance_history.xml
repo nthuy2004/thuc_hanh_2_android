@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_attendance_history"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        app:title="Lịch sử chấm công"
+        app:titleTextColor="@color/white" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_medium"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium">
+
+            <TextView
+                android:id="@+id/tv_summary_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng hợp tháng 10/2026"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_large"
+                android:textColor="@color/textColorPrimary"/>
+
+            <TextView
+                android:id="@+id/tv_summary_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số ngày công: 20"
+                android:layout_marginTop="@dimen/padding_small"/>
+
+            <TextView
+                android:id="@+id/tv_summary_hours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng giờ làm: 160h"
+                android:layout_marginTop="@dimen/padding_small"/>
+
+            <TextView
+                android:id="@+id/tv_summary_ot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng giờ OT: 10h"
+                android:layout_marginTop="@dimen/padding_small"
+                android:textColor="@color/primaryColor"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_attendance_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_worklog"/>
+
+</LinearLayout>
