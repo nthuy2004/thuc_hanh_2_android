@@ -1,39 +1,43 @@
 package com.loader.thuc_hanh_2_android;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+
+import com.loader.thuc_hanh_2_android.session.HomeRouter;
+import com.loader.thuc_hanh_2_android.session.SessionManager;
+
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_dashboard);
+        SessionManager session = new SessionManager(this);
 
-        CardView cvManageEmployees = findViewById(R.id.cv_manage_employees);
-        CardView cvManageSalary = findViewById(R.id.cv_manage_salary);
-        Button btnLogout = findViewById(R.id.btn_logout);
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setGravity(Gravity.CENTER);
 
+        TextView hello = new TextView(this);
+        hello.setTag("hello");
+        hello.setText(getString(R.string.auth_welcome, session.getUsername(), session.getRole()));
+        hello.setTextSize(20);
+        root.addView(hello);
 
-        cvManageEmployees.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở màn hình Quản lý nhân viên (P1 làm)", Toast.LENGTH_SHORT).show();
-            
+        Button logout = new Button(this);
+        logout.setTag("logout");
+        logout.setText(R.string.auth_logout);
+        logout.setOnClickListener(v -> {
+            session.clear();
+            startActivity(HomeRouter.loginIntent(this));
         });
+        root.addView(logout);
 
-        cvManageSalary.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở màn hình Quản lý lương (P3 làm)", Toast.LENGTH_SHORT).show();
-            
-        });
-
-        btnLogout.setOnClickListener(v -> {
-            Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
-            finish();
-        });
+        setContentView(root);
     }
 }
-
