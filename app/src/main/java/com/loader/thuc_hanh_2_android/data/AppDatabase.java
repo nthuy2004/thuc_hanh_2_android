@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -99,5 +100,15 @@ public abstract class AppDatabase extends RoomDatabase {
             }
         }
         return instance;
+    }
+
+    /** Chi dung trong test: dong DB, xoa file va bo singleton de lan sau tao + seed lai. */
+    @VisibleForTesting
+    public static synchronized void resetForTesting(Context context) {
+        if (instance != null) {
+            instance.close();
+            instance = null;
+        }
+        context.getApplicationContext().deleteDatabase(DB_NAME);
     }
 }

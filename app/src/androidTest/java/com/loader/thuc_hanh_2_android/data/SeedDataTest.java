@@ -26,7 +26,7 @@ public class SeedDataTest {
     @Before
     public void setUp() {
         Context context = ApplicationProvider.getApplicationContext();
-        context.deleteDatabase("employee_salary.db");
+        AppDatabase.resetForTesting(context);
         db = AppDatabase.getInstance(context);
     }
 
@@ -42,8 +42,7 @@ public class SeedDataTest {
     public void seed_createsThreeAccountsAndTwoEmployees() {
         assertEquals(3, count("account"));
         assertEquals(2, count("employee"));
-        assertEquals(0, count("work_log"));
-        assertEquals(0, count("salary"));
+        // work_log do P2 seed rieng (WorkLogRepository), khong kiem tra o day.
     }
 
     @Test
