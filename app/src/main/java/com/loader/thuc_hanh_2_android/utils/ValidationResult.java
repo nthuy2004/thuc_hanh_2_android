@@ -1,8 +1,6 @@
 package com.loader.thuc_hanh_2_android.utils;
 
-/**
- * Result object for validation operations in the Attendance module.
- */
+
 public class ValidationResult {
     private final boolean valid;
     private final String message;
@@ -32,3 +30,4 @@ public class ValidationResult {
         return message;
     }
 }
+
