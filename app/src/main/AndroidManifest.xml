@@ -21,6 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Module Attendance (P2) -->
+        <activity
+            android:name=".ui.attendance.EmployeeHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.attendance.AttendanceHistoryActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
