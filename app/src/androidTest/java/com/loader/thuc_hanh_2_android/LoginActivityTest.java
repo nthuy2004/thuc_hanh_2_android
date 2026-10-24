@@ -106,8 +106,7 @@ public class LoginActivityTest {
             assertTrue(session.isLoggedIn());
             assertEquals(Account.ROLE_EMPLOYEE, session.getRole());
             assertTrue(session.getEmployeeId() > 0);
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("nv1"))));
+            onView(withId(R.id.btn_check_in)).check(matches(isDisplayed()));
         }
     }
 }

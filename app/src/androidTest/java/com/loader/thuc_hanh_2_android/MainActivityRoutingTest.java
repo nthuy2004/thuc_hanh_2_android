@@ -54,8 +54,7 @@ public class MainActivityRoutingTest {
     public void employeeSession_goesToEmployeeHome() {
         session.saveSession(2, 1, "nv1", Account.ROLE_EMPLOYEE);
         try (ActivityScenario<MainActivity> s = ActivityScenario.launch(MainActivity.class)) {
-            onView(withTagValue(is((Object) "hello")))
-                    .check(matches(withText(containsString("EMPLOYEE"))));
+            onView(withId(R.id.btn_check_in)).check(matches(isDisplayed()));
         }
     }
 }
