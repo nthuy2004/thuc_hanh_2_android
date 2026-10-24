@@ -8,11 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- App Colors -->
-    <color name="primaryColor">#1976D2</color> <!-- Blue -->
+    
+    <color name="primaryColor">#1976D2</color> 
     <color name="primaryDarkColor">#004BA0</color>
-    <color name="secondaryColor">#4CAF50</color> <!-- Green -->
-    <color name="errorColor">#D32F2F</color> <!-- Red -->
+    <color name="secondaryColor">#4CAF50</color> 
+    <color name="errorColor">#D32F2F</color> 
     <color name="textColorPrimary">#212121</color>
     <color name="textColorSecondary">#757575</color>
     <color name="backgroundColor">#F5F5F5</color>

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder> {
 
-    // Tạm thời dùng String, khi P1 tạo xong class Employee thì đổi String thành Employee
+    
     private List<String> employeeList;
 
     public EmployeeAdapter(List<String> employeeList) {
@@ -32,11 +32,11 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
 
     @Override
     public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position) {
-        // Gán dữ liệu giả
+        
         String data = employeeList.get(position);
         holder.tvName.setText("Nhân viên " + data);
         
-        // Bắt sự kiện nút sửa / xóa
+        
         holder.btnEdit.setOnClickListener(v -> 
             Toast.makeText(v.getContext(), "Sửa nhân viên " + data, Toast.LENGTH_SHORT).show()
         );
@@ -64,3 +64,4 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         }
     }
 }
+

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class WorkLogAdapter extends RecyclerView.Adapter<WorkLogAdapter.WorkLogViewHolder> {
 
-    // Khi P2 tạo xong class WorkLog thì đổi String thành WorkLog
+    
     private List<String> workLogList;
 
     public WorkLogAdapter(List<String> workLogList) {
@@ -52,3 +52,4 @@ public class WorkLogAdapter extends RecyclerView.Adapter<WorkLogAdapter.WorkLogV
         }
     }
 }
+

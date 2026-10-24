@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SalaryAdapter extends RecyclerView.Adapter<SalaryAdapter.SalaryViewHolder> {
 
-    // Khi P3 tạo xong class Salary thì đổi String thành Salary
+    
     private List<String> salaryList;
 
     public SalaryAdapter(List<String> salaryList) {
@@ -52,3 +52,4 @@ public class SalaryAdapter extends RecyclerView.Adapter<SalaryAdapter.SalaryView
         }
     }
 }
+

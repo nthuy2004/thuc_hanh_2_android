@@ -19,12 +19,12 @@ public class EmployeeProfileActivity extends AppCompatActivity {
 
         btnViewAttendance.setOnClickListener(v -> {
             Toast.makeText(this, "Mở Lịch sử chấm công (P2 làm)", Toast.LENGTH_SHORT).show();
-            // TODO: start Activity AttendanceHistoryActivity
+            
         });
 
         btnViewSalary.setOnClickListener(v -> {
             Toast.makeText(this, "Mở Bảng lương cá nhân (P3 làm)", Toast.LENGTH_SHORT).show();
-            // TODO: start Activity EmployeeSalaryActivity
+            
         });
 
         btnLogout.setOnClickListener(v -> {
@@ -33,3 +33,4 @@ public class EmployeeProfileActivity extends AppCompatActivity {
         });
     }
 }
+

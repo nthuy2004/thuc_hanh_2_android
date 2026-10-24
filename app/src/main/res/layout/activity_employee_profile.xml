@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Thông tin cá nhân -->
+            
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Lịch sử chấm công & Bảng lương -->
+            
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
