@@ -28,12 +28,12 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
 
         cvManageEmployees.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở màn hình Quản lý nhân viên (P1 làm)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mo màn hình Quản lý nhân viên (P1 làm)", Toast.LENGTH_SHORT).show();
             // TODO: start Activity EmployeeListActivity
         });
 
         cvManageSalary.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở màn hình Quản lý lương (P3 làm)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "M màn hình Quản lý lương (P3 làm)", Toast.LENGTH_SHORT).show();
             // TODO: start Activity AdminSalaryActivity
         });
 
