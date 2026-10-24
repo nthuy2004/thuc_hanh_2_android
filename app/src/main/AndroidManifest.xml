@@ -29,13 +29,10 @@
             android:windowSoftInputMode="adjustResize" />
             
         <activity
-            android:name=".AdminDashboardActivity"
+            android:name=".EmployeeHomeActivity"
             android:exported="false" />
-            
-        <activity
-            android:name=".EmployeeProfileActivity"
-            android:exported="false" />
-            
+
+        <!-- Module Attendance (P2) -->
         <activity
             android:name=".EmployeeHomeActivity"
             android:exported="false" />

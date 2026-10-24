@@ -11,6 +11,8 @@ import com.loader.thuc_hanh_2_android.data.entity.WorkLog;
 import com.loader.thuc_hanh_2_android.data.repository.WorkLogRepository;
 import com.loader.thuc_hanh_2_android.databinding.ActivityEmployeeHomeBinding;
 import com.loader.thuc_hanh_2_android.session.HomeRouter;
+import com.loader.thuc_hanh_2_android.data.entity.Account;
+import com.loader.thuc_hanh_2_android.session.AccessGuard;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
 import com.loader.thuc_hanh_2_android.ui.attendance.AttendanceHistoryActivity;
 import com.loader.thuc_hanh_2_android.utils.TimeUtils;
