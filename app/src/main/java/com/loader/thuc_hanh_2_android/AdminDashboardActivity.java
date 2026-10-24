@@ -1,17 +1,15 @@
 package com.loader.thuc_hanh_2_android;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.loader.thuc_hanh_2_android.data.entity.Account;
 import com.loader.thuc_hanh_2_android.session.AccessGuard;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
-
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
@@ -23,22 +21,26 @@ public class AdminDashboardActivity extends AppCompatActivity {
         }
         SessionManager session = new SessionManager(this);
 
-        LinearLayout root = new LinearLayout(this);
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setGravity(Gravity.CENTER);
 
-        TextView hello = new TextView(this);
-        hello.setTag("hello");
-        hello.setText(getString(R.string.auth_welcome, session.getUsername(), session.getRole()));
-        hello.setTextSize(20);
-        root.addView(hello);
+        CardView cvManageEmployees = findViewById(R.id.cv_manage_employees);
+        CardView cvManageSalary = findViewById(R.id.cv_manage_salary);
+        Button btnLogout = findViewById(R.id.btn_logout);
 
-        Button logout = new Button(this);
-        logout.setTag("logout");
-        logout.setText(R.string.auth_logout);
-        logout.setOnClickListener(v -> AccessGuard.logout(this));
-        root.addView(logout);
 
-        setContentView(root);
+        cvManageEmployees.setOnClickListener(v -> {
+            Toast.makeText(this, "Mở màn hình Quản lý nhân viên (P1 làm)", Toast.LENGTH_SHORT).show();
+            // TODO: start Activity EmployeeListActivity
+        });
+
+        cvManageSalary.setOnClickListener(v -> {
+            Toast.makeText(this, "Mở màn hình Quản lý lương (P3 làm)", Toast.LENGTH_SHORT).show();
+            // TODO: start Activity AdminSalaryActivity
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            session.clear();
+            startActivity(HomeRouter.loginIntent(this));
+            finish();
+        });
     }
 }
