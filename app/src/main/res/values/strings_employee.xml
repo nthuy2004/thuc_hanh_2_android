@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="employee_list_empty">Chưa có nhân viên nào.</string>
+    <string name="employee_item_code">Mã: %1$s</string>
+    <string name="employee_item_rate">Lương/giờ: %1$s</string>
+    <string name="admin_manage_employees">Quản lý nhân viên</string>
+    <string name="employee_list_no_result">Không tìm thấy nhân viên phù hợp.</string>
+    <string name="employee_dialog_add_title">Thêm nhân viên</string>
+    <string name="employee_dialog_edit_title">Sửa nhân viên</string>
+    <string name="employee_added">Đã thêm nhân viên (tài khoản: %1$s, mật khẩu mặc định: %2$s)</string>
+    <string name="employee_updated">Đã cập nhật nhân viên</string>
+    <string name="employee_deleted">Đã xóa nhân viên</string>
+    <string name="employee_delete_title">Xóa nhân viên</string>
+    <string name="employee_delete_message">Xóa %1$s? Lịch sử chấm công và lương vẫn được giữ lại.</string>
+    <string name="employee_delete_confirm">Xóa</string>
+    <string name="employee_delete_cancel">Hủy</string>
+</resources>

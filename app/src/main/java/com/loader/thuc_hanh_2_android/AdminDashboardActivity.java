@@ -1,5 +1,6 @@
 package com.loader.thuc_hanh_2_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.loader.thuc_hanh_2_android.data.entity.Account;
 import com.loader.thuc_hanh_2_android.session.AccessGuard;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
+import com.loader.thuc_hanh_2_android.ui.employee.EmployeeListActivity;
 
 
 public class AdminDashboardActivity extends AppCompatActivity {
@@ -32,6 +34,13 @@ public class AdminDashboardActivity extends AppCompatActivity {
         hello.setText(getString(R.string.auth_welcome, session.getUsername(), session.getRole()));
         hello.setTextSize(20);
         root.addView(hello);
+
+        Button manageEmployees = new Button(this);
+        manageEmployees.setTag("manage_employees");
+        manageEmployees.setText(R.string.admin_manage_employees);
+        manageEmployees.setOnClickListener(v ->
+                startActivity(new Intent(this, EmployeeListActivity.class)));
+        root.addView(manageEmployees);
 
         Button logout = new Button(this);
         logout.setTag("logout");

@@ -35,6 +35,11 @@
             android:name=".EmployeeProfileActivity"
             android:exported="false" />
 
+        <!-- Employee management (P1) -->
+        <activity
+            android:name=".ui.employee.EmployeeListActivity"
+            android:exported="false" />
+
         <!-- Module Attendance (P2) -->
         <activity
             android:name=".EmployeeHomeActivity"
