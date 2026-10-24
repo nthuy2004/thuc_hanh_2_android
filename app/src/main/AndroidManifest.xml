@@ -27,20 +27,21 @@
             android:name=".LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-            
+
         <activity
-            android:name=".EmployeeHomeActivity"
+            android:name=".AdminDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeProfileActivity"
             android:exported="false" />
 
         <!-- Module Attendance (P2) -->
         <activity
             android:name=".EmployeeHomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.attendance.AttendanceHistoryActivity"
             android:exported="false" />
-            
     </application>
 
 </manifest>
