@@ -30,6 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".EmployeeHomeActivity"
+            android:exported="false" />
 
         <!-- Module Attendance (P2) -->
         <activity
