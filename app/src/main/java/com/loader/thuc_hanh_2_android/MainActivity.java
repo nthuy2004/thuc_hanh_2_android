@@ -5,23 +5,36 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.loader.thuc_hanh_2_android.session.HomeRouter;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
 
-/**
- * Cong dieu huong: khong co giao dien, chi quyet dinh mo man hinh nao.
- * Chua dang nhap -> LoginActivity; da dang nhap -> man hinh theo role.
- */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SessionManager session = new SessionManager(this);
-        Intent target = session.isLoggedIn()
-                ? HomeRouter.homeFor(this, session.getRole())
-                : HomeRouter.loginIntent(this);
-        startActivity(target);
+        
+        // Không dùng setContentView ở đây vì MainActivity chỉ làm nhiệm vụ điều hướng
+
+        SessionManager sessionManager = new SessionManager(this);
+
+        if (sessionManager.isLoggedIn()) {
+            // Đã đăng nhập, kiểm tra Role để chuyển đúng màn hình
+            String role = sessionManager.getRole();
+            Intent intent;
+            if ("ADMIN".equals(role)) {
+                intent = new Intent(this, AdminDashboardActivity.class);
+            } else {
+                // EMPLOYEE
+                intent = new Intent(this, com.loader.thuc_hanh_2_android.ui.attendance.EmployeeHomeActivity.class);
+            }
+            startActivity(intent);
+        } else {
+            // Chưa đăng nhập, chuyển sang Login
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
+        // Đóng MainActivity để user không back lại được màn hình trắng này
         finish();
     }
 }
