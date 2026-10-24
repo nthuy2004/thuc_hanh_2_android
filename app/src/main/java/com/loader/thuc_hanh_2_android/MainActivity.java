@@ -1,24 +1,27 @@
 package com.loader.thuc_hanh_2_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.loader.thuc_hanh_2_android.session.HomeRouter;
+import com.loader.thuc_hanh_2_android.session.SessionManager;
+
+/**
+ * Cong dieu huong: khong co giao dien, chi quyet dinh mo man hinh nao.
+ * Chua dang nhap -> LoginActivity; da dang nhap -> man hinh theo role.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        SessionManager session = new SessionManager(this);
+        Intent target = session.isLoggedIn()
+                ? HomeRouter.homeFor(this, session.getRole())
+                : HomeRouter.loginIntent(this);
+        startActivity(target);
+        finish();
     }
 }
