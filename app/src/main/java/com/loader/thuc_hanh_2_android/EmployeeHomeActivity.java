@@ -1,43 +1,129 @@
 package com.loader.thuc_hanh_2_android;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.loader.thuc_hanh_2_android.data.entity.WorkLog;
+import com.loader.thuc_hanh_2_android.data.repository.WorkLogRepository;
+import com.loader.thuc_hanh_2_android.databinding.ActivityEmployeeHomeBinding;
 import com.loader.thuc_hanh_2_android.session.HomeRouter;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
+import com.loader.thuc_hanh_2_android.ui.attendance.AttendanceHistoryActivity;
+import com.loader.thuc_hanh_2_android.utils.TimeUtils;
+import com.loader.thuc_hanh_2_android.utils.ValidationResult;
 
-/** TAM: man hinh placeholder cua P1. P2 se thay bang Employee Home that. */
+import java.util.Locale;
+
+/**
+ * Man hinh chinh cua Nhan vien (P2): Check-in, Check-out, trang thai ca lam hom nay.
+ */
 public class EmployeeHomeActivity extends AppCompatActivity {
+
+    public static final String EXTRA_EMPLOYEE_ID = "employeeId";
+
+    private ActivityEmployeeHomeBinding binding;
+    private WorkLogRepository workLogRepository;
+    private SessionManager session;
+    private long currentEmployeeId = 1L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SessionManager session = new SessionManager(this);
+        binding = ActivityEmployeeHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        LinearLayout root = new LinearLayout(this);
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setGravity(Gravity.CENTER);
+        session = new SessionManager(this);
+        workLogRepository = new WorkLogRepository(this);
 
-        TextView hello = new TextView(this);
-        hello.setTag("hello");
-        hello.setText(getString(R.string.auth_welcome, session.getUsername(), session.getRole()));
-        hello.setTextSize(20);
-        root.addView(hello);
+        resolveEmployeeId();
 
-        Button logout = new Button(this);
-        logout.setTag("logout");
-        logout.setText(R.string.auth_logout);
-        logout.setOnClickListener(v -> {
+        // Khoi tao du lieu mau neu chua co de tien demo
+        workLogRepository.seedSampleLogsIfEmpty(currentEmployeeId);
+
+        setupToolbar();
+        setupListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshShiftStatus();
+    }
+
+    private void resolveEmployeeId() {
+        if (getIntent().hasExtra(EXTRA_EMPLOYEE_ID)) {
+            currentEmployeeId = getIntent().getLongExtra(EXTRA_EMPLOYEE_ID, 1L);
+        } else if (session.getEmployeeId() != SessionManager.NO_ID) {
+            currentEmployeeId = session.getEmployeeId();
+        } else {
+            currentEmployeeId = 1L;
+        }
+    }
+
+    private void setupToolbar() {
+        binding.toolbarEmployeeHome.setTitle("Trang chủ nhân viên");
+    }
+
+    private void refreshShiftStatus() {
+        binding.tvCurrentDate.setText("Hôm nay: " + TimeUtils.getCurrentDate());
+
+        WorkLog todayLog = workLogRepository.getTodayLog(currentEmployeeId);
+
+        if (todayLog == null) {
+            binding.tvStatus.setText("Trạng thái: CHƯA CHECK-IN");
+            binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.errorColor));
+            binding.btnCheckIn.setEnabled(true);
+            binding.btnCheckOut.setEnabled(false);
+        } else if (WorkLog.STATUS_WORKING.equalsIgnoreCase(todayLog.status)) {
+            String inTime = todayLog.checkInTime != null ? todayLog.checkInTime : "--:--:--";
+            binding.tvStatus.setText("Trạng thái: ĐANG LÀM VIỆC (Vào: " + inTime + ")");
+            binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.primaryColor));
+            binding.btnCheckIn.setEnabled(false);
+            binding.btnCheckOut.setEnabled(true);
+        } else if (WorkLog.STATUS_COMPLETED.equalsIgnoreCase(todayLog.status)) {
+            binding.tvStatus.setText(String.format(Locale.US, "Trạng thái: ĐÃ HOÀN THÀNH (%.2fh)", todayLog.totalHours));
+            binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.secondaryColor));
+            binding.btnCheckIn.setEnabled(false);
+            binding.btnCheckOut.setEnabled(false);
+        } else {
+            binding.tvStatus.setText("Trạng thái: CHƯA HOÀN TẤT");
+            binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.errorColor));
+            binding.btnCheckIn.setEnabled(false);
+            binding.btnCheckOut.setEnabled(true);
+        }
+    }
+
+    private void setupListeners() {
+        binding.btnCheckIn.setOnClickListener(v -> {
+            ValidationResult result = workLogRepository.checkIn(currentEmployeeId);
+            Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
+            if (result.isValid()) {
+                refreshShiftStatus();
+            }
+        });
+
+        binding.btnCheckOut.setOnClickListener(v -> {
+            ValidationResult result = workLogRepository.checkOut(currentEmployeeId);
+            Toast.makeText(this, result.getMessage(), Toast.LENGTH_LONG).show();
+            if (result.isValid()) {
+                refreshShiftStatus();
+            }
+        });
+
+        binding.btnViewHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(EmployeeHomeActivity.this, AttendanceHistoryActivity.class);
+            intent.putExtra(EXTRA_EMPLOYEE_ID, currentEmployeeId);
+            startActivity(intent);
+        });
+
+        binding.btnLogout.setOnClickListener(v -> {
             session.clear();
             startActivity(HomeRouter.loginIntent(this));
+            finish();
         });
-        root.addView(logout);
-
-        setContentView(root);
     }
 }
