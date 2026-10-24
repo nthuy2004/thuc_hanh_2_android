@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.loader.thuc_hanh_2_android.session.HomeRouter;
+import com.loader.thuc_hanh_2_android.data.entity.Account;
+import com.loader.thuc_hanh_2_android.session.AccessGuard;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
 
 /** TAM: man hinh placeholder cua P1. P4 se thay bang Admin Dashboard that. */
@@ -17,6 +18,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!AccessGuard.requireRole(this, Account.ROLE_ADMIN)) {
+            return;
+        }
         SessionManager session = new SessionManager(this);
 
         LinearLayout root = new LinearLayout(this);
@@ -32,10 +36,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         Button logout = new Button(this);
         logout.setTag("logout");
         logout.setText(R.string.auth_logout);
-        logout.setOnClickListener(v -> {
-            session.clear();
-            startActivity(HomeRouter.loginIntent(this));
-        });
+        logout.setOnClickListener(v -> AccessGuard.logout(this));
         root.addView(logout);
 
         setContentView(root);
