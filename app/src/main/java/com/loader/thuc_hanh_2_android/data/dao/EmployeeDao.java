@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import java.util.List;
 
 import com.loader.thuc_hanh_2_android.data.entity.Employee;
 
@@ -21,4 +22,6 @@ public interface EmployeeDao {
 
     @Query("SELECT * FROM employee WHERE accountId = :accountId LIMIT 1")
     Employee getByAccountId(long accountId);
+    @Query("SELECT * FROM employee WHERE isActive = 1 ORDER BY fullname ASC")
+    List<Employee> getAllActive();
 }
