@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
-
+import com.loader.thuc_hanh_2_android.ui.salary.EmployeeSalaryActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -114,6 +114,14 @@ public class EmployeeHomeActivity extends AppCompatActivity {
 
         binding.btnViewHistory.setOnClickListener(v -> {
             Intent intent = new Intent(EmployeeHomeActivity.this, AttendanceHistoryActivity.class);
+            intent.putExtra(EXTRA_EMPLOYEE_ID, currentEmployeeId);
+            startActivity(intent);
+        });
+        binding.btnViewSalary.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    EmployeeHomeActivity.this,
+                    EmployeeSalaryActivity.class
+            );
             intent.putExtra(EXTRA_EMPLOYEE_ID, currentEmployeeId);
             startActivity(intent);
         });

@@ -29,6 +29,13 @@
         <activity
             android:name=".ui.attendance.AttendanceHistoryActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.salary.AdminSalaryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.salary.EmployeeSalaryActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
