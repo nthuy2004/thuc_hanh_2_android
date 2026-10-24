@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.loader.thuc_hanh_2_android.session.HomeRouter;
 import com.loader.thuc_hanh_2_android.session.SessionManager;
 
-/** TAM: man hinh placeholder cua P1. P4 se thay bang Admin Dashboard that. */
+
 public class AdminDashboardActivity extends AppCompatActivity {
 
     @Override
