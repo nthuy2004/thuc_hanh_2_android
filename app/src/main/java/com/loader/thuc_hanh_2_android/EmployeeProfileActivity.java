@@ -1,10 +1,15 @@
 package com.loader.thuc_hanh_2_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.loader.thuc_hanh_2_android.session.HomeRouter;
+import com.loader.thuc_hanh_2_android.session.SessionManager;
+import com.loader.thuc_hanh_2_android.ui.attendance.AttendanceHistoryActivity;
 
 public class EmployeeProfileActivity extends AppCompatActivity {
 
@@ -13,24 +18,26 @@ public class EmployeeProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_profile);
 
+        SessionManager session = new SessionManager(this);
+
         Button btnViewAttendance = findViewById(R.id.btn_view_attendance);
         Button btnViewSalary = findViewById(R.id.btn_view_salary);
         Button btnLogout = findViewById(R.id.btn_logout);
 
         btnViewAttendance.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở Lịch sử chấm công (P2 làm)", Toast.LENGTH_SHORT).show();
-            
+            Intent intent = new Intent(this, AttendanceHistoryActivity.class);
+            intent.putExtra(EmployeeHomeActivity.EXTRA_EMPLOYEE_ID, session.getEmployeeId());
+            startActivity(intent);
         });
 
         btnViewSalary.setOnClickListener(v -> {
-            Toast.makeText(this, "Mở Bảng lương cá nhân (P3 làm)", Toast.LENGTH_SHORT).show();
-            
+            Toast.makeText(this, "Tính năng xem bảng lương đang được hoàn thiện", Toast.LENGTH_SHORT).show();
         });
 
         btnLogout.setOnClickListener(v -> {
-            Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+            session.clear();
+            startActivity(HomeRouter.loginIntent(this));
             finish();
         });
     }
 }
-

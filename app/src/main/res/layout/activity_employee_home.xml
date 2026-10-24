@@ -69,6 +69,15 @@
             android:text="Lịch Sử Chấm Công"
             android:backgroundTint="@color/primaryColor"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"/>
+            android:textSize="@dimen/text_medium"
+            android:layout_marginBottom="@dimen/padding_medium"/>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:text="Đăng xuất"
+            android:textColor="@color/errorColor"
+            style="@style/Widget.Material3.Button.TextButton"/>
     </LinearLayout>
 </LinearLayout>
