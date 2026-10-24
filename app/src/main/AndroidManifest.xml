@@ -21,6 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AdminDashboardActivity" android:exported="false" />
+        <activity android:name=".EmployeeProfileActivity" android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EmployeeHomeActivity"
+            android:exported="false" />
 
         <!-- Module Attendance (P2) -->
         <activity

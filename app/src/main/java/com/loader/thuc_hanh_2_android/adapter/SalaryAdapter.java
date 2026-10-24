@@ -99,6 +99,15 @@ public class SalaryAdapter extends RecyclerView.Adapter<SalaryAdapter.ViewHolder
             holder.employeeName.setVisibility(View.GONE);
             holder.markPaid.setVisibility(View.GONE);
         }
+    public SalaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_salary, parent, false);
+        return new SalaryViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull SalaryViewHolder holder, int position) {
+        String data = salaryList.get(position);
+        holder.tvMonthYear.setText("Tháng: " + data);
     }
 
     @Override
@@ -127,3 +136,20 @@ public class SalaryAdapter extends RecyclerView.Adapter<SalaryAdapter.ViewHolder
         }
     }
 }
+        return salaryList != null ? salaryList.size() : 0;
+    }
+
+    static class SalaryViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMonthYear, tvStatus, tvTotalHours, tvOvertime, tvTotalAmount;
+
+        public SalaryViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvMonthYear = itemView.findViewById(R.id.tv_salary_month_year);
+            tvStatus = itemView.findViewById(R.id.tv_salary_status);
+            tvTotalHours = itemView.findViewById(R.id.tv_salary_total_hours);
+            tvOvertime = itemView.findViewById(R.id.tv_salary_overtime);
+            tvTotalAmount = itemView.findViewById(R.id.tv_salary_total_amount);
+        }
+    }
+}
+

@@ -8,9 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Utility class for date/time formatting, hour calculation, and overtime analysis.
- */
+
 public class TimeUtils {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -35,23 +33,17 @@ public class TimeUtils {
         return sdf;
     }
 
-    /**
-     * Get current date as string (yyyy-MM-dd)
-     */
+    
     public static String getCurrentDate() {
         return getDateFormat().format(new Date());
     }
 
-    /**
-     * Get current time as string (HH:mm:ss)
-     */
+    
     public static String getCurrentTime() {
         return getTimeFullFormat().format(new Date());
     }
 
-    /**
-     * Parse time string from either HH:mm:ss or HH:mm
-     */
+    
     public static Date parseTime(String timeStr) throws ParseException {
         if (timeStr == null) {
             throw new ParseException("Thời gian không được để trống", 0);
@@ -64,9 +56,7 @@ public class TimeUtils {
         }
     }
 
-    /**
-     * Parse date string (yyyy-MM-dd)
-     */
+    
     public static Date parseDate(String dateStr) throws ParseException {
         if (dateStr == null) {
             throw new ParseException("Ngày không được để trống", 0);
@@ -74,9 +64,7 @@ public class TimeUtils {
         return getDateFormat().parse(dateStr.trim());
     }
 
-    /**
-     * Round a double value to exactly 2 decimal places.
-     */
+    
     public static double roundToTwoDecimals(double value) {
         if (Double.isNaN(value) || Double.isInfinite(value)) {
             return 0.0;
@@ -86,10 +74,7 @@ public class TimeUtils {
                 .doubleValue();
     }
 
-    /**
-     * Calculate total hours between checkIn and checkOut.
-     * Total hours = (checkOut - checkIn) in hours, rounded to 2 decimal places.
-     */
+    
     public static double calculateTotalHours(String checkInTime, String checkOutTime) {
         try {
             Date in = parseTime(checkInTime);
@@ -107,10 +92,7 @@ public class TimeUtils {
         }
     }
 
-    /**
-     * Calculate daily overtime:
-     * OT ngày = max(0, totalHours - 8)
-     */
+    
     public static double calculateDailyOvertime(double totalHours) {
         if (totalHours <= 8.0) {
             return 0.0;
@@ -118,9 +100,7 @@ public class TimeUtils {
         return roundToTwoDecimals(totalHours - 8.0);
     }
 
-    /**
-     * Check if check-out time is strictly after check-in time.
-     */
+    
     public static boolean isCheckOutAfterCheckIn(String checkInTime, String checkOutTime) {
         try {
             Date in = parseTime(checkInTime);
@@ -131,9 +111,7 @@ public class TimeUtils {
         }
     }
 
-    /**
-     * Check if a given date is in the future compared to today (calendar day comparison).
-     */
+    
     public static boolean isFutureDate(String dateStr) {
         try {
             Date inputDate = parseDate(dateStr);
@@ -151,9 +129,7 @@ public class TimeUtils {
         }
     }
 
-    /**
-     * Extract month (1-12) from date string (yyyy-MM-dd)
-     */
+    
     public static int getMonthFromDate(String dateStr) {
         try {
             Date date = parseDate(dateStr);
@@ -165,9 +141,7 @@ public class TimeUtils {
         }
     }
 
-    /**
-     * Extract year from date string (yyyy-MM-dd)
-     */
+    
     public static int getYearFromDate(String dateStr) {
         try {
             Date date = parseDate(dateStr);
@@ -186,3 +160,4 @@ public class TimeUtils {
         calendar.set(Calendar.MILLISECOND, 0);
     }
 }
+
