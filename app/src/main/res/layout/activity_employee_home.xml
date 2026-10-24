@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_employee_home"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        app:title="Trang chủ nhân viên"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/padding_large">
+
+        <TextView
+            android:id="@+id/tv_current_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hôm nay: 24/10/2026"
+            android:textSize="@dimen/text_large"
+            android:textColor="@color/textColorPrimary"
+            android:layout_marginBottom="@dimen/padding_medium"/>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái: CHƯA CHECK-IN"
+            android:textSize="@dimen/text_medium"
+            android:textColor="@color/errorColor"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/padding_large"/>
+
+        <Button
+            android:id="@+id/btn_check_in"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="Check In"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginBottom="@dimen/padding_medium"/>
+
+        <Button
+            android:id="@+id/btn_check_out"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="Check Out"
+            android:backgroundTint="@color/errorColor"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"
+            android:enabled="false"/>
+    </LinearLayout>
+</LinearLayout>

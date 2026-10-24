@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_large">
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thêm/Sửa Nhân Viên"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
+        android:layout_marginBottom="@dimen/padding_medium"/>
+
+    <EditText
+        android:id="@+id/edt_emp_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mã nhân viên (VD: EMP01)"
+        android:inputType="text"
+        android:layout_marginBottom="@dimen/padding_small"/>
+
+    <EditText
+        android:id="@+id/edt_emp_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Họ và tên"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="@dimen/padding_small"/>
+
+    <EditText
+        android:id="@+id/edt_emp_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="@dimen/padding_small"/>
+
+    <EditText
+        android:id="@+id/edt_emp_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số điện thoại"
+        android:inputType="phone"
+        android:layout_marginBottom="@dimen/padding_small"/>
+
+    <EditText
+        android:id="@+id/edt_emp_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lương theo giờ (VND)"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="@dimen/padding_medium"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/textColorSecondary"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/primaryColor"/>
+    </LinearLayout>
+</LinearLayout>
