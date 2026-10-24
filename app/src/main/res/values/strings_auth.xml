@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_error_username_required">Vui lòng nhập tên đăng nhập</string>
+    <string name="auth_error_password_required">Vui lòng nhập mật khẩu</string>
+    <string name="auth_error_invalid_credentials">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="auth_error_account_inactive">Tài khoản đã bị vô hiệu hóa</string>
+    <string name="auth_logout">Đăng xuất</string>
+    <string name="auth_welcome">Xin chào, %1$s (%2$s)</string>
+</resources>
